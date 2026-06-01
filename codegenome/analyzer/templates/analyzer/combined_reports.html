@@ -1,0 +1,216 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4 fw-bold text-center">
+    AI Career Analytics Dashboard
+</h1>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% for item in combined_data %}
+
+<div class="card shadow-lg p-4 mb-5">
+
+    <div class="row">
+
+        <!-- STUDENT DETAILS -->
+
+        <div class="col-md-4">
+
+            <h3 class="fw-bold text-primary">
+                {{ item.skill.student.name }}
+            </h3>
+
+            <hr>
+
+            <h5 class="mb-3">
+                Skill Scores
+            </h5>
+
+            <p>
+                <strong>Logic:</strong>
+                {{ item.skill.logic_score }}
+            </p>
+
+            <p>
+                <strong>Debugging:</strong>
+                {{ item.skill.debugging_score }}
+            </p>
+
+            <p>
+                <strong>Consistency:</strong>
+                {{ item.skill.consistency_score }}
+            </p>
+
+            <p>
+                <strong>Speed:</strong>
+                {{ item.skill.speed_score }}
+            </p>
+
+            <p class="fw-bold text-success">
+                Overall:
+                {{ item.skill.overall_score }}
+            </p>
+
+        </div>
+
+        <!-- INTERVIEW SCORES -->
+
+        <div class="col-md-4">
+
+            <h5 class="mb-3">
+                Interview Scores
+            </h5>
+
+            {% if item.interview %}
+
+                <p>
+                    <strong>Mock Interview:</strong>
+                    {{ item.interview.mock_interview_score }}
+                </p>
+
+                <p>
+                    <strong>Resume:</strong>
+                    {{ item.interview.resume_score }}
+                </p>
+
+                <p>
+                    <strong>Aptitude:</strong>
+                    {{ item.interview.aptitude_score }}
+                </p>
+
+                <p>
+                    <strong>Communication:</strong>
+                    {{ item.interview.communication_score }}
+                </p>
+
+                <p class="fw-bold text-success">
+                    Interview Overall:
+                    {{ item.interview.overall_interview_score }}
+                </p>
+
+            {% else %}
+
+                <div class="alert alert-warning">
+
+                    No interview report available.
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <!-- PIE CHART -->
+
+        <div class="col-md-4">
+
+            <canvas id="chart{{ item.skill.id }}"></canvas>
+
+        </div>
+
+    </div>
+
+    <!-- CAREER STATUS -->
+
+    <div class="row mt-4">
+
+        <div class="col-md-12">
+
+            <div class="alert alert-info">
+
+                <strong>Career Guidance:</strong>
+
+                {{ item.career }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- AI SUGGESTIONS -->
+
+    <div class="row mt-3">
+
+        <div class="col-md-12">
+
+            <h5 class="mb-3 text-danger">
+
+                AI Improvement Suggestions
+
+            </h5>
+
+            <ul class="list-group">
+
+                {% for suggestion in item.suggestions %}
+
+                    <li class="list-group-item">
+
+                        {{ suggestion }}
+
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- CHART -->
+
+<script>
+
+const ctx{{ item.skill.id }} =
+document.getElementById(
+    'chart{{ item.skill.id }}'
+);
+
+new Chart(ctx{{ item.skill.id }}, {
+
+    type: 'pie',
+
+    data: {
+
+        labels: [
+
+            'Logic',
+            'Debugging',
+            'Consistency',
+            'Speed'
+
+        ],
+
+        datasets: [{
+
+            data: [
+
+                {{ item.skill.logic_score }},
+                {{ item.skill.debugging_score }},
+                {{ item.skill.consistency_score }},
+                {{ item.skill.speed_score }}
+
+            ]
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true
+
+    }
+
+});
+
+</script>
+
+{% endfor %}
+
+{% endblock %}

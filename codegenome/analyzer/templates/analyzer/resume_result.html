@@ -1,0 +1,71 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="card-box">
+
+    <h1 class="mb-4">
+        Resume Analysis Report
+    </h1>
+
+    <h3>
+        Resume Score:
+        {{ score }}%
+    </h3>
+
+    <!-- PROGRESS BAR -->
+
+    <div class="progress mb-4">
+
+        <div class="progress-bar bg-success"
+             style="width: {{ score }}%;">
+
+            {{ score }}%
+
+        </div>
+
+    </div>
+
+    <!-- SKILLS -->
+
+    <h4>
+        Detected Skills
+    </h4>
+
+    <ul class="list-group mb-4">
+
+        {% for skill in found_skills %}
+
+            <li class="list-group-item">
+
+                {{ skill }}
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+    <!-- AI SUGGESTIONS -->
+
+    <h4>
+        AI Suggestions
+    </h4>
+
+    <ul class="list-group">
+
+        {% for suggestion in suggestions %}
+
+            <li class="list-group-item">
+
+                {{ suggestion }}
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endblock %}

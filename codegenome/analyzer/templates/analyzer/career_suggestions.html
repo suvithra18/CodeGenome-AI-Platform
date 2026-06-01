@@ -1,0 +1,109 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="card-box">
+
+    <h1 class="mb-4">
+        AI Career Suggestions
+    </h1>
+
+    <h2>
+
+        {{ student.name }}
+
+    </h2>
+
+    <hr>
+
+    <!-- OVERALL SCORE -->
+
+    <h4>
+        Career Readiness Score:
+        {{ overall }}%
+    </h4>
+
+    <div class="progress mb-4">
+
+        <div class="progress-bar bg-success"
+             style="width: {{ overall }}%;">
+
+            {{ overall }}%
+
+        </div>
+
+    </div>
+
+    <!-- ROLE -->
+
+    <div class="alert alert-info">
+
+        <strong>Recommended Career Role:</strong>
+
+        {{ career_role }}
+
+    </div>
+
+    <!-- COMPANY -->
+
+    <div class="alert alert-warning">
+
+        <strong>Recommended Company Type:</strong>
+
+        {{ company_type }}
+
+    </div>
+
+    <!-- READINESS -->
+
+    <div class="alert alert-success">
+
+        <strong>Placement Status:</strong>
+
+        {{ readiness }}
+
+    </div>
+
+    <!-- TECHNOLOGIES -->
+
+    <h4 class="mt-4">
+        Recommended Technologies
+    </h4>
+
+    <ul class="list-group mb-4">
+
+        {% for tech in technologies %}
+
+            <li class="list-group-item">
+
+                {{ tech }}
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+    <!-- AI SUGGESTIONS -->
+
+    <h4>
+        AI Improvement Suggestions
+    </h4>
+
+    <ul class="list-group">
+
+        {% for suggestion in suggestions %}
+
+            <li class="list-group-item">
+
+                {{ suggestion }}
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endblock %}

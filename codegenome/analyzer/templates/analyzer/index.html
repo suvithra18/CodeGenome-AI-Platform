@@ -1,0 +1,113 @@
+{% extends 'analyzer/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="row align-items-center mt-5">
+
+    <!-- LEFT SIDE -->
+
+    <div class="col-md-6">
+
+        <h1 class="display-3 fw-bold">
+            AI-Based Coding Skill
+            DNA Analyzer
+        </h1>
+
+        <p class="mt-4 fs-4 text-muted">
+
+            Analyze coding performance,
+            generate AI-powered skill reports,
+            and track developer growth intelligently.
+
+        </p>
+
+        <a href="/register/"
+           class="btn btn-dark btn-lg mt-3 px-4">
+
+            Get Started
+
+        </a>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="col-md-6 text-center">
+
+        <img src="{% static 'images/logo.jpg' %}"
+             class="img-fluid rounded shadow"
+             width="380"
+             alt="AI Logo">
+
+    </div>
+
+</div>
+
+<!-- FEATURES SECTION -->
+
+<div class="mt-5 text-center">
+
+    <h2 class="fw-bold mb-5">
+        Features
+    </h2>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div class="card-box p-4">
+
+                <h4 class="fw-bold">
+                    Skill Analysis
+                </h4>
+
+                <p>
+                    Analyze logic, debugging,
+                    consistency, and coding speed.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card-box p-4">
+
+                <h4 class="fw-bold">
+                    AI Suggestions
+                </h4>
+
+                <p>
+                    Get personalized career
+                    and placement recommendations.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card-box p-4">
+
+                <h4 class="fw-bold">
+                    Visual Reports
+                </h4>
+
+                <p>
+                    Generate charts, analytics,
+                    and downloadable PDF reports.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

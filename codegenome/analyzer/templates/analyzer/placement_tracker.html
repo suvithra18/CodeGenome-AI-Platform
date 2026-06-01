@@ -1,0 +1,129 @@
+{% extends 'analyzer/base.html' %}
+{% block content %}
+       <table class="table table-bordered table-hover">
+
+    <tr class="table-dark">
+
+        <th>
+            Company
+        </th>
+
+        <th>
+            Role
+        </th>
+
+        <th>
+            Package
+        </th>
+
+        <th>
+            Round
+        </th>
+
+        <th>
+            HR Feedback
+        </th>
+
+        <th>
+            Status
+        </th>
+
+        <th>
+            Applied Date
+        </th>
+
+    </tr>
+
+    {% for item in placements %}
+
+    <tr>
+
+        <td>
+            {{ item.company_name }}
+        </td>
+
+        <td>
+            {{ item.role }}
+        </td>
+
+        <td>
+            {{ item.package }}
+        </td>
+
+        <td>
+            {{ item.interview_round }}
+        </td>
+
+        <td>
+            {{ item.hr_feedback }}
+        </td>
+
+        <td>
+
+            {% if item.status == 'Selected' %}
+
+                <span class="badge bg-success">
+
+                    Selected
+
+                </span>
+
+            {% elif item.status == 'Rejected' %}
+
+                <span class="badge bg-danger">
+
+                    Rejected
+
+                </span>
+
+            {% elif item.status == 'Technical Round' %}
+
+                <span class="badge bg-primary">
+
+                    Technical Round
+
+                </span>
+
+            {% elif item.status == 'HR Round' %}
+
+                <span class="badge bg-info">
+
+                    HR Round
+
+                </span>
+
+            {% elif item.status == 'Interview Scheduled' %}
+
+                <span class="badge bg-warning text-dark">
+
+                    Interview Scheduled
+
+                </span>
+
+            {% else %}
+
+                <span class="badge bg-secondary">
+
+                    Applied
+
+                </span>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+            {{ item.applied_date }}
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+    </div>
+
+</div>
+
+{% endblock %}

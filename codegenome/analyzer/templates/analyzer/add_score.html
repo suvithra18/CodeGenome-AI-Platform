@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Coding Score</title>
+</head>
+<body>
+
+<h2>Add Coding Score</h2>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Save Score</button>
+
+</form>
+
+</body>
+</html>

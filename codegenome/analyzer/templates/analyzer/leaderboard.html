@@ -1,0 +1,151 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4 fw-bold text-center">
+    AI Coding Leaderboard
+</h1>
+
+<div class="card-box">
+
+    <table class="table table-hover table-bordered">
+
+        <tr class="table-dark">
+
+            <th>Rank</th>
+
+            <th>Student</th>
+
+            <th>Overall Score</th>
+
+            <th>Developer Level</th>
+
+            <th>Performance</th>
+
+            <th>Badge</th>
+
+        </tr>
+
+        {% for report in leaderboard_data %}
+
+        <tr>
+
+            <!-- RANK -->
+
+            <td>
+
+                {% if forloop.counter == 1 %}
+
+                    🥇
+
+                {% elif forloop.counter == 2 %}
+
+                    🥈
+
+                {% elif forloop.counter == 3 %}
+
+                    🥉
+
+                {% else %}
+
+                    #{{ forloop.counter }}
+
+                {% endif %}
+
+            </td>
+
+            <!-- NAME -->
+
+            <td>
+
+                {{ report.student.name }}
+
+            </td>
+
+            <!-- SCORE -->
+
+            <td>
+
+                {{ report.overall_score }}%
+
+            </td>
+
+            <!-- LEVEL -->
+
+            <td>
+
+                {% if report.developer_level == 'Advanced' %}
+
+                    <span class="badge bg-success">
+                        Advanced
+                    </span>
+
+                {% elif report.developer_level == 'Intermediate' %}
+
+                    <span class="badge bg-warning text-dark">
+                        Intermediate
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+                        Beginner
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+            <!-- PROGRESS -->
+
+            <td width="30%">
+
+                <div class="progress">
+
+                    <div class="progress-bar bg-success"
+
+                         role="progressbar"
+
+                         style="width: {{ report.overall_score }}%;">
+
+                        {{ report.overall_score }}%
+
+                    </div>
+
+                </div>
+
+            </td>
+
+            <!-- BADGES -->
+
+            <td>
+
+                {% if report.overall_score >= 90 %}
+
+                    🚀 Elite Developer
+
+                {% elif report.overall_score >= 75 %}
+
+                    🌟 Top Performer
+
+                {% elif report.overall_score >= 50 %}
+
+                    💡 Rising Coder
+
+                {% else %}
+
+                    📘 Beginner
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+{% endblock %}

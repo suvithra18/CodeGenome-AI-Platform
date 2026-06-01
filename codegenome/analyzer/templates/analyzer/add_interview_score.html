@@ -1,0 +1,84 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-8">
+
+        <div class="card-box">
+
+            <h2 class="text-center mb-4">
+                Interview Preparation Analytics
+            </h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label>
+                        Student
+                    </label>
+
+                    {{ form.student }}
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Mock Interview Score
+                    </label>
+
+                    {{ form.mock_interview_score }}
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Resume Score
+                    </label>
+
+                    {{ form.resume_score }}
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Aptitude Score
+                    </label>
+
+                    {{ form.aptitude_score }}
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>
+                        Communication Score
+                    </label>
+
+                    {{ form.communication_score }}
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-dark w-100">
+
+                    Generate Interview Report
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

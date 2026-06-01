@@ -1,0 +1,96 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-8">
+
+        <div class="card-box">
+
+            <h2 class="mb-4 text-center fw-bold">
+                Generate AI Skill Report
+            </h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <!-- STUDENT -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Select Student
+                    </label>
+
+                    {{ form.student }}
+
+                </div>
+
+                <!-- LOGIC SCORE -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Logic Score
+                    </label>
+
+                    {{ form.logic_score }}
+
+                </div>
+
+                <!-- DEBUGGING -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Debugging Score
+                    </label>
+
+                    {{ form.debugging_score }}
+
+                </div>
+
+                <!-- CONSISTENCY -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Consistency Score
+                    </label>
+
+                    {{ form.consistency_score }}
+
+                </div>
+
+                <!-- SPEED -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Speed Score
+                    </label>
+
+                    {{ form.speed_score }}
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit"
+                        class="btn btn-dark w-100">
+
+                    Generate Report
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

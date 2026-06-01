@@ -1,0 +1,205 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 p-5">
+
+        <!-- TITLE -->
+
+        <h1 class="text-center mb-4">
+
+            AI Coding Challenge
+
+        </h1>
+
+        <!-- QUESTION -->
+
+        <div class="alert alert-primary">
+
+            <h4 class="mb-3">
+
+                Coding Question
+
+            </h4>
+
+            <p class="mb-0 fs-5">
+
+                {{ question }}
+
+            </p>
+
+        </div>
+
+        <!-- FORM -->
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <!-- HIDDEN QUESTION -->
+
+            <input type="hidden"
+                   name="question"
+                   value="{{ question }}">
+
+            <!-- STUDENT -->
+
+            <div class="mb-4">
+
+                <label class="form-label fw-bold">
+
+                    Select Student
+
+                </label>
+
+                {{ form.student }}
+
+            </div>
+
+            <!-- ANSWER -->
+
+            <div class="mb-4">
+
+                <label class="form-label fw-bold">
+
+                    Write Your Python Solution
+
+                </label>
+
+                {{ form.answer }}
+
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+
+            <button type="submit"
+                    class="btn btn-dark w-100 py-2">
+
+                Submit Challenge
+
+            </button>
+
+        </form>
+
+        <!-- AI FEATURES -->
+
+        <div class="row mt-5">
+
+            <div class="col-md-4">
+
+                <div class="card-box text-center">
+
+                    <h3>
+
+                        AI Scoring
+
+                    </h3>
+
+                    <p>
+
+                        Automatic code evaluation
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card-box text-center">
+
+                    <h3>
+
+                        Feedback
+
+                    </h3>
+
+                    <p>
+
+                        Smart improvement suggestions
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="card-box text-center">
+
+                    <h3>
+
+                        Leaderboard
+
+                    </h3>
+
+                    <p>
+
+                        Track coding rankings
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TIPS -->
+
+        <div class="alert alert-warning mt-5">
+
+            <h5>
+
+                Tips for Better Score
+
+            </h5>
+
+            <ul class="mb-0">
+
+                <li>
+                    Use functions properly
+                </li>
+
+                <li>
+                    Write optimized logic
+                </li>
+
+                <li>
+                    Use loops correctly
+                </li>
+
+                <li>
+                    Return meaningful output
+                </li>
+
+                <li>
+                    Maintain clean code structure
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- LEADERBOARD BUTTON -->
+
+        <div class="text-center mt-4">
+
+            <a href="/leaderboard/"
+               class="btn btn-primary">
+
+               View Leaderboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="card-box">
+
+    <h1 class="mb-4">
+        AI Mock Interview
+    </h1>
+
+    <!-- GENERATED QUESTION -->
+
+    <div class="alert alert-info">
+
+        <strong>
+            Interview Question:
+        </strong>
+
+        {{ question }}
+
+    </div>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <!-- HIDDEN QUESTION -->
+
+        <input type="hidden"
+               name="question"
+               value="{{ question }}">
+
+        <!-- STUDENT -->
+
+        <div class="mb-3">
+
+            <label class="fw-bold">
+                Select Student
+            </label>
+
+            {{ form.student }}
+
+        </div>
+
+        <!-- ANSWER -->
+
+        <div class="mb-3">
+
+            <label class="fw-bold">
+                Your Answer
+            </label>
+
+            {{ form.answer }}
+
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+
+            Submit Answer
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4">
+    Interview Readiness Dashboard
+</h1>
+
+<div class="card-box">
+
+<table class="table table-bordered table-hover">
+
+<tr>
+
+    <th>Student</th>
+
+    <th>Mock</th>
+
+    <th>Resume</th>
+
+    <th>Aptitude</th>
+
+    <th>Communication</th>
+
+    <th>Overall</th>
+
+    <th>Status</th>
+
+</tr>
+
+{% for interview in interviews %}
+
+<tr>
+
+    <td>{{ interview.student.name }}</td>
+
+    <td>{{ interview.mock_interview_score }}</td>
+
+    <td>{{ interview.resume_score }}</td>
+
+    <td>{{ interview.aptitude_score }}</td>
+
+    <td>{{ interview.communication_score }}</td>
+
+    <td>{{ interview.overall_interview_score }}</td>
+
+    <td>
+
+        {% if interview.interview_status == 'Placement Ready' %}
+
+            <span class="badge bg-success">
+                Placement Ready
+            </span>
+
+        {% elif interview.interview_status == 'Needs Improvement' %}
+
+            <span class="badge bg-warning text-dark">
+                Needs Improvement
+            </span>
+
+        {% else %}
+
+            <span class="badge bg-danger">
+                Beginner
+            </span>
+
+        {% endif %}
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'analyzer/base.html' %}
+{% block content %}
+        <div class="col-md-4">
+
+            <div class="card-box text-center">
+
+                <h2>
+                    {{ total_students }}
+                </h2>
+
+                <p>
+                    Total Students
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card-box text-center">
+
+                <h2>
+                    {{ avg_skill.overall_score__avg|floatformat:2 }}
+                </h2>
+
+                <p>
+                    Average Skill Score
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="card-box text-center">
+
+                <h2>
+                    {{ avg_interview.overall_interview_score__avg|floatformat:2 }}
+                </h2>
+
+                <p>
+                    Average Interview Score
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

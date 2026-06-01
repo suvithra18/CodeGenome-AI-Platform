@@ -1,0 +1,29 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="card-box">
+
+    <h1 class="mb-4">
+        AI Resume Analyzer
+    </h1>
+
+    <form method="POST"
+          enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit"
+                class="btn btn-primary">
+
+            Analyze Resume
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

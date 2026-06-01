@@ -1,0 +1,374 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4 fw-bold">
+    AI Analytics Dashboard
+</h1>
+
+<!-- TOP CARDS -->
+
+<div class="row g-4">
+
+    <div class="col-md-3">
+
+        <div class="card-box text-center">
+
+            <h2>{{ students.count }}</h2>
+
+            <p>Total Students</p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="card-box text-center">
+
+            <h2>{{ reports.count }}</h2>
+
+            <p>Skill Reports</p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+        
+
+    <div class="card-box text-center">
+
+        <h2>{{ average_score }}%</h2>
+
+        {% if average_score > 0 %}
+
+            <p>Average Performance</p>
+
+        {% else %}
+
+            <p>No Performance Data</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+    <div class="col-md-3">
+
+       <div class="card-box text-center">
+
+    {% if reports %}
+
+        <h2 class="text-success">
+            ACTIVE
+        </h2>
+
+    {% else %}
+
+        <h2 class="text-warning">
+            IDLE
+        </h2>
+
+    {% endif %}
+
+    <p>AI Analytics Engine</p>
+
+</div>
+
+    </div>
+
+</div>
+
+<!-- QUICK ACTIONS -->
+
+<div class="row mt-4">
+
+    <div class="col-md-12">
+
+        <div class="card-box">
+
+            <h4 class="mb-3">
+                Quick Actions
+            </h4>
+
+            <a href="/register/"
+               class="btn btn-dark">
+                Add Student
+            </a>
+
+            <a href="/add-report/"
+               class="btn btn-primary">
+                Skill Analytics
+            </a>
+ <a href="/add-interview-score/"
+   class="btn btn-warning">
+   Interview Analytics
+</a>
+            <a href="/view-reports/"
+               class="btn btn-success">
+                View Reports
+            </a>
+           
+<a href="/combined-reports/"
+   class="btn btn-info">
+
+    AI Analytics Reports
+
+</a>
+<a href="/leaderboard/"
+   class="btn btn-danger">
+
+   Leaderboard
+
+</a>
+
+
+<a href="/download-report/{{ student.id }}/"
+   class="btn btn-danger ">
+
+   Download PDF Report
+
+</a> <br><br>
+
+<a href="/github-profile/{{ student.id }}/"
+   class="btn btn-dark">
+
+   GitHub Analytics
+
+</a>
+<a href="/resume-analyzer/"
+   class="btn btn-warning">
+
+   Resume Analyzer
+
+</a>
+<a href="/career-suggestions/{{ student.id }}/"
+   class="btn btn-success">
+
+   AI Career Suggestions
+
+</a>
+<a href="/mock-interview/"
+   class="btn btn-dark">
+
+   AI Mock Interview
+
+</a>
+<a href="/coding-challenge/"
+   class="btn btn-dark">
+
+   Coding Challenge
+
+</a>
+<a href="/skill-gap/{{ student.id }}/"
+   class="btn btn-warning">
+
+   Skill Gap Analyzer
+
+</a>
+
+
+ <br><br>
+
+<a href="/certificate/{{ student.id }}/"
+   class="btn btn-success">
+
+   Generate Certificate
+
+</a>
+
+<a href="/admin-analytics/"
+   class="btn btn-dark">
+
+   Admin Analytics
+
+</a>
+
+<a href="/chatbot/"
+   class="btn btn-primary">
+
+   AI Chatbot
+
+</a>
+
+<a href="/portfolio/{{ student.id }}/"
+   class="btn btn-warning">
+
+   Portfolio
+
+</a>
+
+<a href="/placement-tracker/{{ student.id }}/"
+   class="btn btn-danger">
+
+   Placement Tracker
+
+</a>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- STUDENT TABLE -->
+
+<div class="row mt-4">
+
+    <div class="col-md-8">
+
+        <div class="card-box">
+
+            <h4 class="mb-4">
+                Student Analytics
+            </h4>
+
+            <table class="table table-hover">
+
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>GitHub</th>
+                    <th>Status</th>
+                </tr>
+
+                {% for student in students %}
+
+                <tr>
+
+                    <td>{{ student.name }}</td>
+
+                    <td>{{ student.email }}</td>
+
+                    <td>{{ student.github_username }}</td>
+
+                    <td>
+                        <span class="badge bg-success">
+                            Active
+                        </span>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- TOP PERFORMERS -->
+
+    <div class="col-md-4">
+
+       <div class="card-box">
+
+    <h4 class="mb-4">
+        Top Performers
+    </h4>
+
+    {% if top_performers %}
+
+        {% for performer in top_performers %}
+
+        <div class="mb-4">
+
+            <div class="d-flex justify-content-between">
+
+                <strong>
+                    {{ performer.student.name }}
+                </strong>
+
+                <strong>
+                    {{ performer.overall_score }}%
+                </strong>
+
+            </div>
+
+            <div class="progress mt-2">
+
+                <div class="progress-bar bg-success"
+                     role="progressbar"
+
+                     style="width: {{ performer.overall_score }}%;">
+
+                    {{ performer.overall_score }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="alert alert-warning">
+
+            No performance reports available.
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+    </div>
+
+</div>
+
+<!-- RECENT ACTIVITIES -->
+
+<div class="row mt-4">
+
+    <div class="col-md-6">
+
+        <div class="card-box">
+
+           <h4 class="mb-4">
+        Recent Activities
+    </h4>
+
+    <ul class="list-group">
+
+        {% for report in recent_reports %}
+
+            <li class="list-group-item">
+
+                Skill report generated for
+
+                <strong>
+                    {{ report.student.name }}
+                </strong>
+
+            </li>
+
+        {% endfor %}
+
+        {% for interview in recent_interviews %}
+
+            <li class="list-group-item">
+
+                Interview report updated for
+
+                <strong>
+                    {{ interview.student.name }}
+                </strong>
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<h1 class="mb-4 fw-bold">
+    AI Career Analytics Report
+</h1>
+
+{% for report in reports %}
+
+<div class="card-box mb-5">
+
+    <div class="row">
+
+        <!-- LEFT SIDE -->
+
+        <div class="col-md-6">
+
+            <h3 class="mb-3">
+
+                {{ report.student.name }}
+
+            </h3>
+
+            <p>
+                <strong>Logic Score:</strong>
+                {{ report.logic_score }}
+            </p>
+
+            <p>
+                <strong>Debugging Score:</strong>
+                {{ report.debugging_score }}
+            </p>
+
+            <p>
+                <strong>Consistency Score:</strong>
+                {{ report.consistency_score }}
+            </p>
+
+            <p>
+                <strong>Speed Score:</strong>
+                {{ report.speed_score }}
+            </p>
+
+            <p>
+                <strong>Overall Score:</strong>
+                {{ report.overall_score }}
+            </p>
+
+            <p>
+
+                <strong>Developer Level:</strong>
+
+                {% if report.developer_level == 'Advanced' %}
+
+                    <span class="badge bg-success">
+                        Advanced
+                    </span>
+
+                {% elif report.developer_level == 'Intermediate' %}
+
+                    <span class="badge bg-warning text-dark">
+                        Intermediate
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+                        Beginner
+                    </span>
+
+                {% endif %}
+
+            </p>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="col-md-6">
+
+            <h4 class="mb-3">
+                AI Suggestions
+            </h4>
+
+            {% if report.overall_score >= 80 %}
+
+                <div class="alert alert-success">
+
+                    <strong>Excellent Performance!</strong>
+
+                    <ul>
+
+                        <li>
+                            Start applying for product companies
+                        </li>
+
+                        <li>
+                            Focus on system design
+                        </li>
+
+                        <li>
+                            Participate in advanced mock interviews
+                        </li>
+
+                        <li>
+                            Build real-time full stack projects
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            {% elif report.overall_score >= 50 %}
+
+                <div class="alert alert-warning">
+
+                    <strong>Good Progress!</strong>
+
+                    <ul>
+
+                        <li>
+                            Practice DSA daily
+                        </li>
+
+                        <li>
+                            Improve debugging skills
+                        </li>
+
+                        <li>
+                            Build API-based projects
+                        </li>
+
+                        <li>
+                            Improve coding speed
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-danger">
+
+                    <strong>Needs Improvement!</strong>
+
+                    <ul>
+
+                        <li>
+                            Focus on Python fundamentals
+                        </li>
+
+                        <li>
+                            Solve beginner coding problems
+                        </li>
+
+                        <li>
+                            Improve logical thinking
+                        </li>
+
+                        <li>
+                            Practice daily coding exercises
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- CHART SECTION -->
+
+   
+
+</div>
+
+{% endfor %}
+
+
+{% endblock %}

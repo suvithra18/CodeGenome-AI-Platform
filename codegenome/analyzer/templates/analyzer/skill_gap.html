@@ -1,0 +1,123 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="card-box">
+
+    <h1 class="mb-4">
+        AI Skill Gap Analyzer
+    </h1>
+
+    <h3>
+
+        {{ student.name }}
+
+    </h3>
+
+    <hr>
+
+    <!-- READINESS -->
+
+    <h4>
+        Industry Readiness:
+        {{ readiness }}%
+    </h4>
+
+    <div class="progress mb-4">
+
+        <div class="progress-bar bg-success"
+             style="width: {{ readiness }}%;">
+
+            {{ readiness }}%
+
+        </div>
+
+    </div>
+
+    <!-- CURRENT SKILLS -->
+
+    <div class="row">
+
+        <div class="col-md-6">
+
+            <div class="card-box">
+
+                <h4 class="mb-3">
+                    Detected Skills
+                </h4>
+
+                <ul class="list-group">
+
+                    {% for skill in student_skills %}
+
+                        <li class="list-group-item">
+
+                             {{ skill }}
+
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <!-- MISSING SKILLS -->
+
+        <div class="col-md-6">
+
+            <div class="card-box">
+
+                <h4 class="mb-3">
+                    Missing Skills
+                </h4>
+
+                <ul class="list-group">
+
+                    {% for skill in missing_skills %}
+
+                        <li class="list-group-item">
+
+                             {{ skill }}
+
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ROADMAP -->
+
+    <div class="card-box mt-4">
+
+        <h4 class="mb-3">
+            AI Learning Roadmap
+        </h4>
+
+        <ul class="list-group">
+
+            {% for item in roadmap %}
+
+                <li class="list-group-item">
+
+                     {{ item }}
+
+                </li>
+
+            {% endfor %}
+
+        </ul>
+
+    </div>
+
+</div>
+
+{% endblock %}

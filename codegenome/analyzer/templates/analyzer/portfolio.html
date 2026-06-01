@@ -1,0 +1,471 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <!-- PROFILE SECTION -->
+
+    <div class="card shadow-lg border-0 p-5 text-center">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+             width="120"
+             class="mx-auto mb-3">
+
+        <h1>
+            {{ student.name }}
+        </h1>
+
+        <p class="text-muted">
+            {{ student.email }}
+        </p>
+
+        <!-- GITHUB -->
+
+        <div class="mt-3">
+
+            <h5>
+                GitHub Profile
+            </h5>
+
+            <a href="https://github.com/{{ student.github_username }}"
+               target="_blank"
+               class="btn btn-dark">
+
+               {{ student.github_username }}
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- PERFORMANCE CARDS -->
+
+    <div class="row mt-5">
+
+        <!-- CODING AVG -->
+
+        {% if coding_avg > 0 %}
+
+        <div class="col-md-3">
+
+            <div class="card-box text-center">
+
+                <h2 class="text-success">
+
+                    {{ coding_avg }}%
+
+                </h2>
+
+                <p>
+                    Coding Challenge Average
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <!-- INTERVIEW AVG -->
+
+        {% if interview_avg > 0 %}
+
+        <div class="col-md-3">
+
+            <div class="card-box text-center">
+
+                <h2 class="text-primary">
+
+                    {{ interview_avg }}%
+
+                </h2>
+
+                <p>
+                    Interview Average
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <!-- RESUME SCORE -->
+
+        {% if resume %}
+
+        <div class="col-md-3">
+
+            <div class="card-box text-center">
+
+                <h2 class="text-warning">
+
+                    {{ resume.resume_score }}%
+
+                </h2>
+
+                <p>
+                    Resume Score
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        <!-- OVERALL SKILL -->
+
+        {% if skill_report %}
+
+        <div class="col-md-3">
+
+            <div class="card-box text-center">
+
+                <h2 class="text-danger">
+
+                    {{ skill_report.overall_score }}%
+
+                </h2>
+
+                <p>
+                    Overall Skill Score
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <!-- SKILL ANALYTICS -->
+
+    {% if skill_report %}
+
+    <div class="card shadow-lg border-0 p-4 mt-5">
+
+        <h3 class="mb-4">
+            Skill Analytics
+        </h3>
+
+        <!-- LOGIC -->
+
+        <div class="mb-3">
+
+            <label class="fw-bold">
+                Logic Building
+            </label>
+
+            <div class="progress">
+
+                <div class="progress-bar bg-success"
+                     style="width: {{ skill_report.logic_score }}%;">
+
+                    {{ skill_report.logic_score }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- DEBUGGING -->
+
+        <div class="mb-3">
+
+            <label class="fw-bold">
+                Debugging
+            </label>
+
+            <div class="progress">
+
+                <div class="progress-bar bg-info"
+                     style="width: {{ skill_report.debugging_score }}%;">
+
+                    {{ skill_report.debugging_score }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- SPEED -->
+
+        <div class="mb-3">
+
+            <label class="fw-bold">
+                Coding Speed
+            </label>
+
+            <div class="progress">
+
+                <div class="progress-bar bg-warning"
+                     style="width: {{ skill_report.speed_score }}%;">
+
+                    {{ skill_report.speed_score }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CONSISTENCY -->
+
+        <div class="mb-3">
+
+            <label class="fw-bold">
+                Consistency
+            </label>
+
+            <div class="progress">
+
+                <div class="progress-bar bg-danger"
+                     style="width: {{ skill_report.consistency_score }}%;">
+
+                    {{ skill_report.consistency_score }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+    <!-- AI CAREER ROLE -->
+
+    <div class="alert alert-info mt-5">
+
+        <h4>
+            AI Recommended Career Role
+        </h4>
+
+        <p class="mb-0">
+
+            {{ career_role }}
+
+        </p>
+
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+
+    <div class="card shadow-lg border-0 p-4 mt-5">
+
+        <h3 class="mb-4">
+            Achievements
+        </h3>
+
+        {% if achievements %}
+
+            {% for achievement in achievements %}
+
+                <span class="badge bg-success p-3 me-2 mb-2">
+
+                    {{ achievement }}
+
+                </span>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="alert alert-warning">
+
+                No achievements yet.
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+    <!-- CODING CHALLENGE HISTORY -->
+
+    <div class="card shadow-lg border-0 p-4 mt-5">
+
+        <h3 class="mb-4">
+            Coding Challenge History
+        </h3>
+
+        {% if coding_challenges %}
+
+        <table class="table table-bordered table-hover">
+
+            <tr class="table-dark">
+
+                <th>
+                    Question
+                </th>
+
+                <th>
+                    Score
+                </th>
+
+                <th>
+                    Feedback
+                </th>
+
+            </tr>
+
+            {% for challenge in coding_challenges %}
+
+            <tr>
+
+                <td>
+                    {{ challenge.question }}
+                </td>
+
+                <td>
+                    {{ challenge.score }}%
+                </td>
+
+                <td>
+                    {{ challenge.feedback }}
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+        {% else %}
+
+        <div class="alert alert-warning">
+
+            No coding challenges completed yet.
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+   <!-- MOCK INTERVIEW HISTORY -->
+
+<div class="card shadow-lg border-0 p-4 mt-5">
+
+    <h3 class="mb-4">
+        Mock Interview Analytics
+    </h3>
+
+    {% if mock_interviews.exists %}
+
+    <table class="table table-bordered table-hover">
+
+        <tr class="table-dark">
+
+            <th>
+                Question
+            </th>
+
+            <th>
+                Score
+            </th>
+
+            <th>
+                Feedback
+            </th>
+
+        </tr>
+
+        {% for interview in mock_interviews %}
+
+        <tr>
+
+            <td>
+                {{ interview.question }}
+            </td>
+
+            <td>
+                {{ interview.score }}%
+            </td>
+
+            <td>
+                {{ interview.feedback }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <div class="alert alert-warning">
+
+        No mock interviews completed yet.
+
+    </div>
+
+    {% endif %}
+
+</div>
+    <!-- AI SUGGESTIONS -->
+
+    <div class="alert alert-warning mt-5">
+
+        <h4>
+            AI Suggestions
+        </h4>
+
+        {% if suggestions %}
+
+        <ul>
+
+            {% for suggestion in suggestions %}
+
+            <li>
+
+                {{ suggestion }}
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+
+        <p>
+            Keep improving your technical skills.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    <!-- PLACEMENT READINESS -->
+
+    <div class="card shadow-lg border-0 p-4 mt-5 mb-5">
+
+        <h3 class="mb-4">
+            Placement Readiness
+        </h3>
+
+        <div class="progress">
+
+            <div class="progress-bar bg-primary"
+                 style="width: {{ readiness }}%;">
+
+                {{ readiness }}%
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

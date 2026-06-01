@@ -1,0 +1,59 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="card-box">
+
+    <h1 class="mb-4">
+        AI Interview Report
+    </h1>
+
+    <h3>
+        Score:
+        {{ interview.score }}%
+    </h3>
+
+    <!-- PROGRESS -->
+
+    <div class="progress mb-4">
+
+        <div class="progress-bar bg-success"
+             style="width: {{ interview.score }}%;">
+
+            {{ interview.score }}%
+
+        </div>
+
+    </div>
+
+    <!-- FEEDBACK -->
+
+    <div class="alert alert-info">
+
+        {{ feedback }}
+
+    </div>
+
+    <!-- AI SUGGESTIONS -->
+
+    <h4>
+        AI Suggestions
+    </h4>
+
+    <ul class="list-group">
+
+        {% for suggestion in suggestions %}
+
+            <li class="list-group-item">
+
+                {{ suggestion }}
+
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endblock %}

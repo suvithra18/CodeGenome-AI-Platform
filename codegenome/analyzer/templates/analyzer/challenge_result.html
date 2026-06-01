@@ -1,0 +1,138 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 p-4">
+
+        <h1 class="text-center mb-4">
+            Coding Challenge Result
+        </h1>
+
+        <!-- QUESTION -->
+
+        <div class="alert alert-primary">
+
+            <h5 class="fw-bold">
+                Question
+            </h5>
+
+            <p class="mb-0">
+                {{ challenge.question }}
+            </p>
+
+        </div>
+
+        <!-- ANSWER -->
+
+        <div class="mt-4">
+
+            <h5 class="fw-bold">
+                Submitted Answer
+            </h5>
+
+            <div class="bg-light p-3 rounded">
+
+                <pre>{{ challenge.answer }}</pre>
+
+            </div>
+
+        </div>
+
+        <!-- SCORE -->
+
+        <div class="mt-4">
+
+            <h4>
+                AI Coding Score:
+                {{ challenge.score }}%
+            </h4>
+
+            <div class="progress mt-3">
+
+                <div class="progress-bar bg-success"
+                     role="progressbar"
+                     style="width: {{ challenge.score }}%;">
+
+                    {{ challenge.score }}%
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FEEDBACK -->
+
+        <div class="mt-4">
+
+            <h5 class="fw-bold">
+                AI Feedback
+            </h5>
+
+            <div class="alert alert-info">
+
+                {{ challenge.feedback }}
+
+            </div>
+
+        </div>
+
+        <!-- PERFORMANCE LEVEL -->
+
+        <div class="mt-4">
+
+            {% if challenge.score >= 80 %}
+
+                <div class="alert alert-success">
+
+                    🚀 Excellent Problem Solving Skills
+
+                </div>
+
+            {% elif challenge.score >= 50 %}
+
+                <div class="alert alert-warning">
+
+                    👍 Good Attempt — Improve Optimization
+
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-danger">
+
+                    📘 Need More Coding Practice
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="mt-4 d-flex gap-3">
+
+            <a href="/coding-challenge/"
+               class="btn btn-dark">
+
+               Try Another Challenge
+
+            </a>
+
+            <a href="/leaderboard/"
+               class="btn btn-primary">
+
+               View Leaderboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

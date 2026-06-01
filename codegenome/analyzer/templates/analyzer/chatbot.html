@@ -1,0 +1,55 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4">
+
+        <h1 class="mb-4 text-center">
+            AI Chatbot Assistant
+        </h1>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                <textarea name="message"
+                          class="form-control"
+                          rows="4"
+                          placeholder="Ask coding or interview questions..."></textarea>
+
+            </div>
+
+            <button type="submit"
+                    class="btn btn-dark w-100">
+
+                Ask AI
+
+            </button>
+
+        </form>
+
+        {% if response %}
+
+            <div class="alert alert-info mt-4">
+
+                <strong>
+                    AI Response:
+                </strong>
+
+                <br>
+
+                {{ response }}
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}
