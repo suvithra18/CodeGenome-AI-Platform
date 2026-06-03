@@ -109,14 +109,14 @@ CodeGenome AI is an intelligent student performance analytics platform built usi
 
 ---
 
- ## 🚀 Future Enhancements
- 
-🤖 AI Career Recommendations
-💻 Online Code Compiler Integration
-📄 ATS Resume Analysis
-📊 Advanced Analytics Dashboard
-🔗 GitHub & LinkedIn Integration
-📱 Mobile Application Support
+## 🚀 Future Enhancements
+
+- 🤖 AI Career Recommendations
+- 💻 Online Code Compiler Integration
+- 📄 ATS Resume Analysis
+- 📊 Advanced Analytics Dashboard
+- 🔗 GitHub & LinkedIn Integration
+- 📱 Mobile Application Support
 
 ---
 
