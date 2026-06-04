@@ -122,15 +122,11 @@ CodeGenome AI is an intelligent student performance analytics platform built usi
 
 ## 📸 Screenshots
 
-Add your project screenshots here.
-
-Example:
-
-- Dashboard
-- Coding Challenge Module
-- Mock Interview Module
-- Resume Analyzer
-- Portfolio Dashboard
+## 📸Screenshoots
+ <p align="center">
+  <img src="screenshots/main.png" width="45%">
+  <img src="screenshots/analytics.png" width="45%">
+</p>
 
 ---
 
