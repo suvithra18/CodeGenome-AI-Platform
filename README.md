@@ -139,7 +139,7 @@ CodeGenome AI is an intelligent student performance analytics platform built usi
 
 <p align="center">
   <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/skill.png" width="45%">
-  <img src="http://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/resume.png" width="45%">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/resume.png" width="45%">
 </p>
 
 <p align="center">
