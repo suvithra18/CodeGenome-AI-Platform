@@ -123,9 +123,31 @@ CodeGenome AI is an intelligent student performance analytics platform built usi
 ## 📸 Screenshots
 
  <p align="center">
-  <img src="codegenome/screenshots/main.png" width="45%">
-  <img src="codegenome/screenshots/analytics.png" width="45%">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/main.png" width="45%">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/analytics.png" width="45%">
 </p>
+
+<p align="center">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/report.png" width="45%">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/dashboard.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/leaderboard.png" width="45%">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/portfolio.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/skill.png" width="45%">
+  <img src="http://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/resume.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/coding.png" width="45%">
+  <img src="https://github.com/suvithra18/CodeGenome-AI-Platform/blob/main/codegenome/screenshot/interview.png" width="45%">
+</p>
+
+
 
 ---
 
